@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Teamable</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css"/>
+        <script src="app.js" ></script>
+        
+        
+    </head>
+
+
+
+    <body>
+
+
+        <div id="display-view">
+
+            <h1>User Profile </h1>
+            <img src="profile.jpg">
+            <br>
+
+            <span>Name: </span> <b id="name">Essa Ali</b>
+            <hr />
+
+            <span>Email: </span> <b id="email">essa@gamil.com</b>
+            <hr />
+
+            <span>Intrests: </span> <b id="intrests">Cloud and DevOps</b>
+            <hr />
+
+            <button onclick="handleEditProfile()">Edit profile</button>
+
+        </div>   
+
+
+        <div id="edit-view">
+
+            <h1>User Profile </h1>
+            <img src="profile.jpg">
+            <br>
+
+            <span>Name: </span> 
+             <input type="text" id="input-name" placeholder="Essa"/>
+            <hr />
+
+            <span>Email: </span> 
+             <input type="text" id="input-email" placeholder="essa@gamil.com"/>
+            <hr />
+
+            <span>Intrests: </span>
+             <input type="text"  id="input-intrests" placeholder="Cloud and DevOps"/> 
+            <hr />
+
+            
+
+            <button onclick="handleUpdateProfile()">Update profile</button>
+
+        </div>   
+
+
+        
+            
+    </body>
+
+
+
+
+
+
+
+</html>
