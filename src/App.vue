@@ -40,6 +40,7 @@
 
 
 <script>
+import { createHydrationRenderer } from "vue";
 import image from "./profile.jpg";
 
 export default {
@@ -47,25 +48,72 @@ export default {
   data() {
     return {
       image: image,
-      name : "Mark Spencer",
-      email: "mark.spencer@gmial.com",
-      intrests: "coding",
+      name : "",
+      email: "",
+      intrests: "",
       isEditMode: false
 
     };
+
+    
+
   },
+
+  async created() {
+
+    const userData = await this.fetchUserProfile()
+    this.name = userData.name
+    this.email = userData.email
+    this.intrests = userData.intrests
+
+  },
+
   methods: {
     handleEditProfile() {
 
        this.isEditMode = true
     },
-    handleUpdateProfile() {
+    async handleUpdateProfile() {
+
+        const payload = {
+
+            name: this.name,
+            email: this.email,
+            intrests: this.intrests
+
+        }
+        const resJson = await this.updateUserProfile(payload)
+        console.log(resJson)
      
         this.isEditMode = false
      
     },
-  },
-};
+
+    async fetchUserProfile() {
+
+       const res = await fetch("get-profile")
+       return await res.json()
+
+    },
+
+    async updateUserProfile (payload) {
+
+        const res = await fetch("update-profile", {
+            
+            method: "POST",
+            headers: {
+                "content-type" : "application/json"
+            },
+
+            body: JSON.stringify(payload)
+
+        })
+
+        return await res.json()
+    }
+
+    }
+}
 </script>
 
 
