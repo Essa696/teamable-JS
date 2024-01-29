@@ -10,7 +10,7 @@
         <span>Email: </span><b id="email">{{ email }}</b>
         <hr />
   
-        <span>Interests: </span><b id="interests">{{ intrests }}</b>
+        <span>Interests: </span><b id="interests">{{ interests }}</b>
         <hr />
   
         <button @click="handleEditProfile">Edit Profile</button>
@@ -29,7 +29,7 @@
         <hr />
   
         <span>Interests: </span>
-        <input type="text" id="input-interests" v-model="intrests" />
+        <input type="text" id="input-interests" v-model="interests" />
         <hr />
   
         <button @click="handleUpdateProfile">Update Profile</button>
@@ -50,7 +50,7 @@ export default {
       image: image,
       name : "",
       email: "",
-      intrests: "",
+      interests: "",
       isEditMode: false
 
     };
@@ -64,7 +64,7 @@ export default {
     const userData = await this.fetchUserProfile()
     this.name = userData.name
     this.email = userData.email
-    this.intrests = userData.intrests
+    this.interests = userData.interests
 
   },
 
@@ -79,7 +79,7 @@ export default {
 
             name: this.name,
             email: this.email,
-            intrests: this.intrests
+            interests: this.interests
 
         }
         const resJson = await this.updateUserProfile(payload)
